@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class WorkSpaceZipper {
     private FilePath workSpace;
@@ -33,7 +34,7 @@ public class WorkSpaceZipper {
     }
 
     private File getArtifactZip(FilePath artifactLocation) throws IOException, InterruptedException {
-        File resultFile = File.createTempFile("awslambda-", ".zip");
+        File resultFile = Files.createTempFile("awslambda-", ".zip").toFile();
 
         if (!artifactLocation.isDirectory()) {
             if(artifactLocation.exists()) {
